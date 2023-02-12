@@ -13,11 +13,11 @@ namespace ApiSeriesPersonajes2023.Controllers
 
         public SeriesController(RepositorySeries repo)
         {
-            this.repo = repo; 
+            this.repo = repo;
         }
 
         [HttpGet]
-        public ActionResult <List<Serie>>GetSeries()
+        public ActionResult<List<Serie>> GetSeries()
         {
             return this.repo.GetSeries();
         }
@@ -30,11 +30,10 @@ namespace ApiSeriesPersonajes2023.Controllers
 
         [HttpGet]
         [Route("[action]/{idserie}")]
-        public ActionResult<List<Personaje>> PersonajesSerie(int idserie)
+        public ActionResult<List<Personaje>> PersonajesSerie
+            (int idserie)
         {
-            return this.repo.GetPersonajesSeries(idserie);
+            return this.repo.GetPersonajesSerie(idserie);
         }
-
-        
     }
 }

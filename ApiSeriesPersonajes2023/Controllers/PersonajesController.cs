@@ -10,7 +10,8 @@ namespace ApiSeriesPersonajes2023.Controllers
     public class PersonajesController : ControllerBase
     {
         private RepositorySeries repo;
-        public PersonajesController (RepositorySeries repo)
+
+        public PersonajesController(RepositorySeries repo)
         {
             this.repo = repo;
         }
@@ -29,7 +30,8 @@ namespace ApiSeriesPersonajes2023.Controllers
 
         [HttpPut]
         [Route("[action]/{idpersonaje}/{idserie}")]
-        public async Task<ActionResult> UpdatePersonajeSerie(int idpersonaje,int idserie)
+        public async Task<ActionResult> UpdatePersonajeSerie
+            (int idpersonaje, int idserie)
         {
             await this.repo.UpdatePersonajeSerie(idpersonaje, idserie);
             return Ok();
@@ -38,11 +40,10 @@ namespace ApiSeriesPersonajes2023.Controllers
         [HttpPost]
         public async Task<ActionResult> CreatePersonaje(Personaje personaje)
         {
-            await this.repo.InsertPersonaje(personaje.IdPersonaje, personaje.Nombre,
-                                            personaje.Imagen, personaje.IdSerie);
-                return Ok();
+            await this.repo.InsertPersonaje(personaje.IdPersonaje
+                , personaje.Nombre, personaje.Imagen
+                , personaje.IdSerie);
+            return Ok();
         }
-
-        
     }
 }
